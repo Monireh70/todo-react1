@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import Todo from "./components/Todo.js";
+import TodoInput from "./components/TodoInput.js";
+import Actions from "./components/Actions.js";
+import "./App.css";
 
-function App() {
+const todos = [
+  {
+    title: "item1",
+    status: false,
+  },
+  {
+    title: "item2",
+    status: true,
+  },
+  {
+    title: "item3",
+    status: false,
+  },
+];
+export function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="form">
+        <TodoInput />
+        <br />
+        <br />
+        <Actions />
+      </div>
+      <div className="list">
+        {todos.map((item)=>{
+          return (<Todo title={item.title} status={item.title} />);
+        
+       })}
+        </div>
     </div>
   );
 }
 
 export default App;
+
