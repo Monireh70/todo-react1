@@ -13,7 +13,7 @@ const todos = [
     status: true,
   },
   {
-    title: "item3",
+    title: "item6",
     status: true,
   },
 ];
