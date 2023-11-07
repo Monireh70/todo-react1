@@ -9,7 +9,7 @@ const todos = [
     status: false,
   },
   {
-    title: "item5",
+    title: "item4",
     status: true,
   },
   {
