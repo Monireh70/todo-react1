@@ -28,7 +28,7 @@ export function App() {
       </div>
       <div className="list">
         {todos.map((item) => {
-          return (<Todo title={item.title} checked={item.status} />);
+          return (<Todo title={item.title} status={item.status} />);
         })}
       </div>
     </div>
