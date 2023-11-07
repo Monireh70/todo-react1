@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import Todo from "./components/Todo.js";
 import TodoInput from "./components/TodoInput.js";
 import Actions from "./components/Actions.js";
@@ -28,14 +27,12 @@ export function App() {
         <Actions />
       </div>
       <div className="list">
-        {todos.map((item)=>{
-          return (<Todo title={item.title} status={item.title} />);
-        
-       })}
-        </div>
+        {todos.map((item) => {
+          return <Todo title={item.title} status={item.status} />;
+        })}
+      </div>
     </div>
   );
 }
 
 export default App;
-
