@@ -9,12 +9,12 @@ const todos = [
     status: false,
   },
   {
-    title: "item2",
+    title: "item5",
     status: true,
   },
   {
     title: "item3",
-    status: false,
+    status: true,
   },
 ];
 export function App() {
@@ -28,7 +28,7 @@ export function App() {
       </div>
       <div className="list">
         {todos.map((item) => {
-          return <Todo title={item.title} status={item.status} />;
+          return (<Todo title={item.title} checked={item.status} />);
         })}
       </div>
     </div>
