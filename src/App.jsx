@@ -1,6 +1,6 @@
-import Todo from "./components/Todo.js";
-import TodoInput from "./components/TodoInput.js";
-import Actions from "./components/Actions.js";
+import Todo from "./components/Todo.jsx";
+import TodoInput from "./components/TodoInput.jsx";
+import Actions from "./components/Actions.jsx";
 import "./App.css";
 
 const todos = [
@@ -13,7 +13,7 @@ const todos = [
     status: true,
   },
   {
-    title: "item6",
+    title: "item5",
     status: true,
   },
 ];
@@ -28,7 +28,7 @@ export function App() {
       </div>
       <div className="list">
         {todos.map((item) => {
-          return (<Todo title={item.title} status={item.status} />);
+          return <Todo title={item.title} status={item.status} />;
         })}
       </div>
     </div>
