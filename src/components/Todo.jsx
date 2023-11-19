@@ -7,3 +7,13 @@ export default function Todo(props) {
     </div>
   );
 }
+
+
+//function in js VS a Component:
+function folan(a, b, c){
+  return a+b+c;
+}
+
+function Folan(props){
+  return props.a +props.b+ props.c;
+}
