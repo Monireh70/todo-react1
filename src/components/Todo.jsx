@@ -8,7 +8,7 @@ export default function Todo(props) {
       />
       <span>{props.title}</span>
       <button className="delete" onClick={() =>{
-        console.log("delete clicked")
+        console.log("delete clicked;")
       }}> Delete</button>
     </div>
   );
