@@ -11,6 +11,7 @@ export default function TodoInput(props) {
     <div>
       <h1> Your Todo title : {word}</h1>
       <input
+        value={word} //to s
         onKeyUp={(e) => {
           const exceptions = ["Shift", "Escape", "Tab"];
           if (e.key === "Backspace") {
@@ -21,7 +22,7 @@ export default function TodoInput(props) {
             return;
           }
           const char = e.key;
-          const my_string  = word + char;
+          const my_string = word + char;
           updateWord(my_string);
           console.log(my_string);
         }}
@@ -29,17 +30,19 @@ export default function TodoInput(props) {
         id="todo-txt"
         type="text"
         placeholder="Please Type Your Activity"
-      
       />
-      <button onClick={ () =>{props.handleSubmit(word)}} id="save-btn">
+      <button
+        onClick={() => {
+          props.handleSubmit(word);
+          updateWord(""); //to delete text from state.
+        }}
+        id="save-btn"
+      >
         Save
       </button>
-           {/*onClick={props.handleSubmit(word)} =>{123!}  */}
-
+      {/*onClick={props.handleSubmit(word)} =>{123!} ....the first input of onclick is event e, while in this situation it is determined word. */}
     </div>
   );
 }
 
-function OnAddItem(e, word) {
-  // console.log(word)...>undefined
-}
+

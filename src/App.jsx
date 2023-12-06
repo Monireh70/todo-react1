@@ -19,14 +19,48 @@ const todos = [
   },
 ];
 // todos is a reference to a place in memory.
-function printme(name){
-  console.log(name)
-}
+
 export function App() {
   const [list, setList] = useState([]);
+  const [filter, setfilter] = useState("All");
   //Note: const[switch, setSwitch]= useState("on"); setSwitch("on"); Nothing will be done since the state has not been changed!
   //In Arrays and Objects, push can not change refrence but it can change the array!
   //So we should use spread Operator:[]
+
+  function handle(text) {
+    const new_item = {
+      title: text,
+      status: false,
+    };
+    const new_list = [...list, new_item];
+    setList(new_list); //without setList any item can not add to page, since app will be done again using setList.
+  }
+
+  function toggleStatus(title) {
+    console.log("clicked");
+    //We need a new array with new reference and one changed status.
+    const newList = list.map((item) => {
+      // if (item.title === title){
+      //   item.status = !item.status;
+      // }
+      if (item.title === title) {
+        return {
+          title: item.title,
+          status: !item.status,
+        };
+      }else{
+        return item
+      }
+    });
+    console.log("toggole", list, newList);
+    setList(newList);
+  }
+
+  // function hadlechoose(){
+  //   console.log("choose !");
+   
+
+  // }
   return (
     <div className="container">
       <div className="form">
@@ -46,7 +80,8 @@ export function App() {
           Test Button
         </button> */}
 
-        <TodoInput handleSubmit={printme}
+        <TodoInput
+          handleSubmit={handle}
           // handleSubmit={(value) => {
           //   const new_Item = {
           //     title: value,
@@ -58,11 +93,18 @@ export function App() {
         />
         <br />
         <br />
-        <Actions />
+        <Actions handlefilter={setfilter} filter={filter}/>
+        {/* handleSelect={hadlechoose} */}
       </div>
       <div className="list">
         {list.map((item) => {
-          return <Todo title={item.title} status={item.status} />;
+          return (
+            <Todo
+              title={item.title}
+              status={item.status}
+              handleCheck={toggleStatus}
+            />
+          );
           //Calling Todo Component, for example: Todo( {title: "salam", status: false} )
         })}
       </div>
