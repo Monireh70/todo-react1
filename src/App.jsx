@@ -27,6 +27,8 @@ export function App() {
   //In Arrays and Objects, push can not change refrence but it can change the array!
   //So we should use spread Operator:[]
 
+    //----------------------------Add--------------------------
+
   function handle(text) {
     const new_item = {
       title: text,
@@ -36,6 +38,7 @@ export function App() {
     setList(new_list); //without setList any item can not add to page, since app will be done again using setList.
   }
 
+  //----------------------------Toggole--------------------------
   function toggleStatus(title) {
     console.log("clicked");
     //We need a new array with new reference and one changed status.
@@ -56,11 +59,22 @@ export function App() {
     setList(newList);
   }
 
-  // function hadlechoose(){
-  //   console.log("choose !");
-   
+  //----------------------------Filter--------------------------
+  //A new List to list
+  const filtered = list.filter((todo) => {
+    if (filter==="ToDo"){
+    return todo.status===false ;
+  }else if(filter==="Done"){
+    return todo.status===true ;
+  }else {
+    return true
+  }
+}
+  )
+  console.log("filtered" ,filtered)
 
-  // }
+ // console.log("filter",filter) //we have access to all,todo,done in app!
+
   return (
     <div className="container">
       <div className="form">
@@ -93,11 +107,13 @@ export function App() {
         />
         <br />
         <br />
+        
         <Actions handlefilter={setfilter} filter={filter}/>
         {/* handleSelect={hadlechoose} */}
       </div>
       <div className="list">
-        {list.map((item) => {
+        {/* render base on filtered.map instead of list.map */}
+        {filtered.map((item) => {
           return (
             <Todo
               title={item.title}
